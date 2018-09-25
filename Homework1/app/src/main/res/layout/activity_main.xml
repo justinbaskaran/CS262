@@ -48,7 +48,7 @@
         android:layout_below="@+id/value1string"
         android:layout_toEndOf="@+id/value1string"
         android:ems="10"
-        android:inputType="textPersonName|number" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/value"

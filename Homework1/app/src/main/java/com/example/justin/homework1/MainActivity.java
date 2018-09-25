@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -31,27 +32,30 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Long v1 = Long.valueOf(value1.getText().toString());
-                Long v2 = Long.valueOf(value2.getText().toString());
+                try {
+                    Integer v1 = Integer.valueOf(value1.getText().toString());
+                    Integer v2 = Integer.valueOf(value2.getText().toString());
 
 
-                if (operator.getSelectedItem().toString().equals("+"))
+                    if (operator.getSelectedItem().toString().equals("+")) {
+                        Log.e("Value of Answer", String.valueOf(v1 + v2));
+                        answer.setText(String.valueOf(v1 + v2));
+                    } else if (operator.getSelectedItem().toString().equals("-")) {
+                        Log.e("Value of Answer", String.valueOf(v1 - v2));
+                        answer.setText(String.valueOf(v1 - v2));
+                    } else if (operator.getSelectedItem().toString().equals("*")) {
+                        Log.e("Value of Answer", String.valueOf(v1 * v2));
+                        answer.setText(String.valueOf(v1 * v2));
+                    } else if (operator.getSelectedItem().toString().equals("/")) {
+                        Log.e("Value of Answer", String.valueOf(v1 / v2));
+                        answer.setText(String.valueOf(v1 / v2));
+                    }
+                } catch (Exception e)
                 {
-                    Log.e("Value of Answer",String.valueOf(v1 + v2));
-                    answer.setText(String.valueOf(v1 + v2));
+                    Toast.makeText(getApplicationContext(), "Invalid Inputs!",
+                            Toast.LENGTH_LONG).show();
                 }
-                else if (operator.getSelectedItem().toString().equals("-"))
-                {
-                    answer.setText(String.valueOf(v1 - v2));
-                }
-                else if (operator.getSelectedItem().toString().equals("*"))
-                {
-                    answer.setText(String.valueOf(v1 * v2));
-                }
-                else if (operator.getSelectedItem().toString().equals("/"))
-                {
-                    answer.setText(String.valueOf(v1 / v2));
-                }
+
             }
         });
 
