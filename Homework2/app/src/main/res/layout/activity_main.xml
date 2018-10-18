@@ -20,7 +20,8 @@
             android:layout_height="49dp"
             android:layout_toLeftOf="@+id/fetch_btn"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:digits="0123456789."
+            android:inputType="number"/>
 
         <Button
             android:id="@+id/fetch_btn"
