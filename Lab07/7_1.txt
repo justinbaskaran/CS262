@@ -1,0 +1,11 @@
+Player(ID, emailAddress, name)
+PlayerGame(gameID, playerID, score)
+Game (ID, time)
+
+-- Extended as per 7.1----
+
+-- Keep track of each player’s cash, their properties, houses, hotels and where their piece is currently located.
+
+GameState(gameID (primary),playerID (primary),cashAmt,numHouses,numHotels,peiceLocation,uCards)
+
+
