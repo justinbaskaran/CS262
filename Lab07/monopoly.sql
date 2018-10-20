@@ -1,7 +1,7 @@
 ﻿--
 -- This SQL script builds a monopoly database, deleting any pre-existing version.
 --
--- @author kvlinden
+-- @author Justin Baskaran
 -- @version Summer, 2015
 --
 
