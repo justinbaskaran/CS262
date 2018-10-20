@@ -2,7 +2,7 @@
 -- This SQL script builds a monopoly database, deleting any pre-existing version.
 --
 -- @author Justin Baskaran
--- @version Summer, 2015
+-- @version Fall, 2018
 --
 
 -- Drop previous versions of the tables if they they exist, in reverse order of foreign keys.
