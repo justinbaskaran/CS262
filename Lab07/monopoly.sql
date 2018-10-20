@@ -36,7 +36,7 @@ CREATE TABLE GameState (
 	numHouses integer,
 	numHotels integer,
 	currentLocation varchar(50),
-	properties varchar(500)
+	properties varchar
 	);
 
 
