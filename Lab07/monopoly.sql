@@ -6,6 +6,7 @@
 --
 
 -- Drop previous versions of the tables if they they exist, in reverse order of foreign keys.
+DROP TABLE IF EXISTS GameState;
 DROP TABLE IF EXISTS PlayerGame;
 DROP TABLE IF EXISTS Game;
 DROP TABLE IF EXISTS Player;
@@ -31,10 +32,11 @@ CREATE TABLE PlayerGame (
 CREATE TABLE GameState (
 	gameID integer REFERENCES Game(ID), 
 	playerID integer REFERENCES Player(ID),
-	cashAmt integer,
-	cashAmt integer,
-	cashAmt integer,
-	cashAmt integer,
+	cashAmt money,
+	numHouses integer,
+	numHotels integer,
+	currentLocation varchar(50),
+	properties varchar(500)
 	);
 
 
@@ -45,6 +47,8 @@ CREATE TABLE GameState (
 GRANT SELECT ON Game TO PUBLIC;
 GRANT SELECT ON Player TO PUBLIC;
 GRANT SELECT ON PlayerGame TO PUBLIC;
+GRANT SELECT ON GameState TO PUBLIC;
+
 
 -- Add sample records.
 INSERT INTO Game VALUES (1, '2006-06-27 08:00:00');
@@ -63,3 +67,7 @@ INSERT INTO PlayerGame VALUES (2, 2, 0.00);
 INSERT INTO PlayerGame VALUES (2, 3, 500.00);
 INSERT INTO PlayerGame VALUES (3, 2, 0.00);
 INSERT INTO PlayerGame VALUES (3, 3, 5500.00);
+
+INSERT INTO GameState VALUES (1, 1, 5500.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
+INSERT INTO GameState VALUES (1, 2, 5511.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
+INSERT INTO GameState VALUES (1, 3, 5512.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
