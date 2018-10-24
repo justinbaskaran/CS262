@@ -1,8 +1,8 @@
 ﻿--
 -- This SQL script builds a monopoly database, deleting any pre-existing version.
 --
--- @author Justin Baskaran
--- @version Fall, 2018
+-- @author jpb29
+-- @version Fall 2018
 --
 
 -- Drop previous versions of the tables if they they exist, in reverse order of foreign keys.
@@ -35,7 +35,7 @@ CREATE TABLE GameState (
 	cashAmt money,
 	numHouses integer,
 	numHotels integer,
-	currentLocation varchar(50),
+	currentLocation varchar,
 	properties varchar
 	);
 
@@ -53,7 +53,7 @@ GRANT SELECT ON GameState TO PUBLIC;
 -- Add sample records.
 INSERT INTO Game VALUES (1, '2006-06-27 08:00:00');
 INSERT INTO Game VALUES (2, '2006-06-28 13:20:00');
-INSERT INTO Game VALUES (3, '2006-06-29 18:41:00');
+INSERT INTO Game VALUES (3, '2018-10-16 18:41:00');
 
 INSERT INTO Player(ID, emailAddress) VALUES (1, 'me@calvin.edu');
 INSERT INTO Player VALUES (2, 'king@gmail.edu', 'The King');
@@ -68,6 +68,8 @@ INSERT INTO PlayerGame VALUES (2, 3, 500.00);
 INSERT INTO PlayerGame VALUES (3, 2, 0.00);
 INSERT INTO PlayerGame VALUES (3, 3, 5500.00);
 
-INSERT INTO GameState VALUES (1, 1, 5500.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
-INSERT INTO GameState VALUES (1, 2, 5511.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
-INSERT INTO GameState VALUES (1, 3, 5512.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
+INSERT INTO GameState VALUES (2, 1, 5500.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
+INSERT INTO GameState VALUES (2, 2, 5511.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
+INSERT INTO GameState VALUES (2, 3, 5512.00,2,3,'Broadway','Broadway,Virgina,Chicago Street');
+
+
