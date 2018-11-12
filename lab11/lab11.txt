@@ -1,39 +1,47 @@
 Homework 1 Changes:
-- removed one unused import
+- removed one unused import 
 	-"import org.w3c.dom.Text;"
+
 -  removed a namespace that isn't used
  	-xmlns:app="http://schemas.android.com/apk/res-auto" in activity_main.xml
+
 - redudant casting of object to variable specified under that type
 	- operator = (Spinner) findViewById(R.id.spinner); (perator is already a Spinner)
 	-   value1 = (TextView) findViewById(R.id.value) 
-- switched multi if-statements with case statement
 
-- moved static strings into strings.xml 
+- switched multi if-statements with case statement, it is better to use a control structure that is more fit for 
+this kind of one way excution.
+
+- moved static strings into strings.xml , so you can translate strings.xml into many language 
 	- refactor > string resource @string/calcuate
 
-- change answer,operator,value1, value2 to private
+- change answer,operator,value1, value2 to private, this makes it smaller namespace when trying to allocate memory
 
-- repalced onClickListener with lambda
+- repalced onClickListener with lambda, its more efficent 
 
-- removed import android.view.View from MainActivity.java
+- removed import android.view.View from MainActivity.java 
 
 
 Homework 2:
-- removed the extra </ListView> tab from activity_main.xml
+- removed the extra </ListView> tab from activity_main.xml, this is more concise 
 
 -removed from list_item1.xml unused XML schema 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    - Namespaces aren't used it will save memory in the android device
 
 - changed typos
 	- is NULL
 	- listofJsonObjects -> listOfJsonObjects
-	- 
+	- Good practice 
+
 - changed private 
 	- some functions I changed to private
 	- public static String GET -> private static String GET
+
 - final modifier
-	- Context mContext -> final Context mContext
+	- Context mContext -> final Context mContext\
+	- Good to restrict acess so other variables can't acess it.
 
 - removed unused string
     private static final String TAG = "HTTPAsyncTask";
@@ -44,6 +52,9 @@ Homework 2:
 	- import android.view.View;
 	- import android.view.ViewGroup;
 	- import android.widget.TextView;
+	- more concise
+
 - remove redudant type cast
 	-(ListView)
 	-(TextView)
+	- 
