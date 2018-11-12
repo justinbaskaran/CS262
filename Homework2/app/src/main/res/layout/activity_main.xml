@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,17 +18,17 @@
             android:layout_width="281dp"
             android:layout_height="49dp"
             android:layout_toLeftOf="@+id/fetch_btn"
-            android:ems="10"
             android:digits="0123456789."
-            android:inputType="number"/>
+            android:ems="10"
+            android:inputType="number" />
 
         <Button
             android:id="@+id/fetch_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/filterField"
-            android:text="Fetch"
             android:onClick="fetchBtn"
+            android:text="Fetch"
             tools:layout_editor_absoluteX="281dp"
             tools:layout_editor_absoluteY="16dp" />
     </LinearLayout>
@@ -43,12 +42,9 @@
 
 
         <ListView
-            android:id="@+id/listofJsonObjects"
+            android:id="@+id/listOfJsonObjects"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </ListView>
-
-
+            android:layout_height="match_parent"/>
 
 
     </LinearLayout>

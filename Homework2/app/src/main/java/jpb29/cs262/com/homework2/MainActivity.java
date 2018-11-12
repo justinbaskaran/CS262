@@ -16,7 +16,6 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -34,7 +33,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView lv;
+    private ListView lv;
 
 //    String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
 //            "WebOS","Ubuntu","Windows7","Max OS X"};
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        lv = (ListView) findViewById(R.id.listofJsonObjects);
+        lv =  findViewById(R.id.listOfJsonObjects);
         Thread t = new Thread(new Runnable() {
             public void run() {
                 HttpAsyncTask myTask = new HttpAsyncTask();
@@ -78,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void fetchBtn(View view) {
         EditText search = findViewById(R.id.filterField);
-        String searchstring = search.getText().toString();
+        String searchString = search.getText().toString();
 
-        if (searchstring.equals(""))
+        if (searchString.equals(""))
         {
             Thread t = new Thread(new Runnable() {
                 public void run() {
@@ -92,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
             t.start();
         } else {
             lv.setAdapter(null);
-            final String searchstringnew = searchstring;
+            final String searchStringNew = searchString;
             Thread t = new Thread(new Runnable() {
                 public void run() {
 
                     HttpAsyncTask myTask = new HttpAsyncTask();
-                    myTask.execute("https://calvincs262-monopoly.appspot.com/monopoly/v1/player/" + searchstringnew);
+                    myTask.execute("https://calvincs262-monopoly.appspot.com/monopoly/v1/player/" + searchStringNew);
                     Log.e("SIZE", String.valueOf(myTask.items.size()));
                 }
             });
@@ -108,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
     class TestAdapter extends BaseAdapter {
 
-        ArrayList<listItem> listItem;
+        final ArrayList<listItem> listItem;
 
 
-        Context mContext;
+        final Context mContext;
         //constructor
-        public TestAdapter(Context mContext, ArrayList<listItem> listItem) {
+        private TestAdapter(Context mContext, ArrayList<listItem> listItem) {
             this.mContext = mContext;
             this.listItem = listItem;
 
@@ -137,14 +136,14 @@ public class MainActivity extends AppCompatActivity {
             View row = inflater.inflate(R.layout.list_item1, viewGroup, false);
 
 
-            TextView tv = (TextView)row.findViewById(R.id.tv);
+            TextView tv = row.findViewById(R.id.tv);
             Log.e("id is: ", String.valueOf(listItem.get(position).id));
             Log.e("name is: ", String.valueOf(listItem.get(position).name));
             Log.e("email is: ", String.valueOf(listItem.get(position).email));
 
             if (tv == null)
             {
-                Log.e("TextView","iSNULL");
+                Log.e("TextView","is NULL");
             }
             tv.setText(String.valueOf(listItem.get(position).id)
                     + ". " + listItem.get(position).name
@@ -167,8 +166,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static String GET(String url){
-        InputStream inputStream = null;
+    private static String GET(String url){
+        InputStream inputStream;
         String result = "";
         try {
 
@@ -181,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             // receive response as inputStream
             inputStream = httpResponse.getEntity().getContent();
 
-            // convert inputstream to string
+            // convert input stream to string
             if(inputStream != null)
                 result = convertInputStreamToString(inputStream);
             else
@@ -196,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
-        String line = "";
+        String line;
         String result = "";
         while((line = bufferedReader.readLine()) != null)
             result += line;
@@ -207,8 +206,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        private static final String TAG = "HTTPAsyncTask";
-        ArrayList<listItem> items= new ArrayList<listItem>();
+        final ArrayList<listItem> items= new ArrayList();
 
         @Override
         protected String doInBackground(String... urls) {
@@ -221,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
 
            // Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
-            Log.e("STRING RECIEVED",result);
+            Log.e("STRING RECEIVED",result);
 
             try {
                 JSONObject jsonObject = new JSONObject(result);
@@ -260,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
                     lv.setAdapter(new TestAdapter(MainActivity.this, items));
                 }
                 catch (JSONException a) {
-
+                    Log.e("Hello","JSON Exception");
                 }
             }
 
