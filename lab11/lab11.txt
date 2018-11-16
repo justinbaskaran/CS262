@@ -58,3 +58,21 @@ Homework 2:
 	-(ListView)
 	-(TextView)
 	- 
+
+- didn't change +=
+	- They wanted me to change it due
+	to the fact that I'm 
+	'Concepating in loop' but that's intentional
+	when you need to inflate a .JSON output with the contents from the Appserver.
+
+- didn't chagne unchecked assignment of
+	final ArrayList<listItem> items= new ArrayList();
+	- becuase I needed to initliaze the empty
+	array list to an empty aray list...
+
+- Didn't chane "Depreciated API usage"
+	- 	I need the depreciated API, like
+	HTTPClient, DefaultHTTPClient.
+
+- Didn't change .setText()
+	I need to use that to set the text of the output....
